@@ -29,64 +29,35 @@
 
 / {
     behaviors {
-        hm: homerow_mods {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            quick_tap_ms = <0>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
-        };
-        // Left-hand HRM
-        ht_left: left_side_homerow_mod {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <280>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <150>;
-            bindings = <&kp>, <&kp>;
-            // hold-trigger-key-positions = <KEYS_R THUMBS>;
-            hold-trigger-on-release;
-        };
-
-        // Right-hand HRM
-        ht_right: right_side_homerow_mod {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <280>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <125>;
-            bindings = <&kp>, <&kp>;
-            // hold-trigger-key-positions = <KEYS_L THUMBS>;
-            hold-trigger-on-release;
-        };
-        td_bs: td_bs {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            hold-while-undecided;
-            bindings = <&mo>, <&mkp>;
-        };
         showscreen: showscreen {
             compatible = "zmk,behavior-tap-dance";
+            label = "SHOWSCREEN";
             #binding-cells = <0>;
-            tapping-term-ms = <250>;
             bindings = <&kp LC(UP_ARROW)>, <&kp LG(UP_ARROW)>;
         };
-
     };
 
      combos {
-            compatible = "zmk,combos";
-            combo_esc {
-                timeout-ms = <50>;
-                key-positions = <0 1>;
-                bindings = <&kp ESC>;
-            };
+        compatible = "zmk,combos";
+        combo_esc {
+            timeout-ms = <50>;
+            key-positions = <0 1>;
+            bindings = <&kp ESC>;
+        };
+                left_enter {
+            bindings = <&kp ENTER>;
+            key-positions = <23 24>;
+        };
+
+        lockscreen {
+            bindings = <&kp LG(LC(Q))>;
+            key-positions = <4 5>;
+        };
+
+        printscreen {
+            bindings = <&kp LG(RS(N5))>;
+            key-positions = <14 15>;
+        };
     };
 
 
@@ -111,10 +82,10 @@ label= "BASE"                                                  ;
                                  └─────────┴─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┴─────────┘ */ 
  bindings = <
  //╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷
-               &kp Q            &kp W            &kp E             &kp R              &kp T              &kp Y   &kp U     &kp I     &kp O     &kp P
-    &kp BSPC   &ht_left LCMD A  &ht_left LALT S  &ht_left LCTRL D  &ht_left  LSHFT F  &kp G              &kp H   &ht_right RSHFT J  &ht_right RCTRL K   &ht_right LALT L  &ht_right RCMD SEMICOLON   &kp SQT
+               &kp Q            &kp W            &kp E             &kp R              &kp T              &kp Y   &kp U        &kp I        &kp O       &kp P
+    &kp BSPC   &mt LGUI A       &mt LALT S       &mt LCTRL D       &mt LSHFT F        &kp G              &kp H   &mt RSHFT J  &mt RCTRL K  &mt RALT L  &mt RGUI SEMICOLON   &kp SQT
     &kp LSHFT  &lt LOWER Z          &kp X            &kp C             &kp V     &kp B    &trans     &trans  &kp N   &kp M              &kp COMMA           &kp PERIOD        &lt RAISE SLASH                &kp RSHFT
-                                &kp LCTRL &td_bs 3 MB1 &kp BACKSPACE  &kp DELETE   &kp DELETE  &kp SPACE   &mo RAISE &kp BSPC    
+                                &kp LCTRL &showscreen  &lt 3 TAB    &kp BACKSPACE   &kp DELETE  &kp SPACE    &lt 3 A &kp BSPC    
                         >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
                 };

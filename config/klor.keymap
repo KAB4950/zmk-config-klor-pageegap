@@ -135,10 +135,10 @@
                                  └─────────┴─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┴─────────┘ */
 
             bindings = <
-           &trans  &trans     &trans      &trans  &trans                  &trans  &trans  &kp RA(U)  &trans  &trans
-&kp RA(A)  &trans  &kp RA(S)  &trans      &trans  &trans                  &trans  &trans  &trans     &trans  &kp RA(O)  &trans
-&trans     &trans  &trans     &trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans  &trans     &trans
-                              &mo ADJUST  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+           &kp SINGLE_QUOTE   &kp PERCENT        &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp HASH                    &trans  &trans  &kp RA(U)  &trans  &trans
+&kp RA(A)  &kp DOUBLE_QUOTES  &kp RA(AT_SIGN)    &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp TILDE                   &trans  &trans  &trans     &trans  &kp RA(O)  &trans
+&trans     &trans             &kp DOUBLE_QUOTES  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp DOLLAR  &trans  &trans  &trans  &trans  &trans     &trans  &trans     &trans
+                                                 &trans                &trans                 &trans      &trans  &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -146,10 +146,10 @@
 
         // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 
-        adjust_layer {
+        move {
             // ┌───────────────────────────────────────────────────────────┐
 
-            label = "ADJUST";
+            label = "move";
 
             // └───────────────────────────────────────────────────────────┘
             /*           ┌─────────┬─────────┬─────────┬─────────┬─────────┐                    ┌─────────┬─────────┬─────────┬─────────┬─────────┐
@@ -163,21 +163,21 @@
                                  └─────────┴─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┴─────────┘ */
 
             bindings = <
-        &bt BT_CLR  &trans  &trans  &trans     &trans                  &trans      &trans  &trans  &trans      &bt BT_CLR
-&trans  &bt BT_NXT  &trans  &trans  &trans     &trans                  &trans      &trans  &trans  &bt BT_NXT  &trans      &trans
-&trans  &bt BT_PRV  &trans  &trans  &kp KP_N6  &trans  &trans  &trans  &bt BT_PRV  &trans  &trans  &trans      &trans      &trans
-                            &trans  &trans     &trans  &trans  &trans  &trans      &trans  &trans
+        &bt BT_CLR  &trans  &trans  &trans     &trans                  &trans      &trans    &trans        &trans          &bt BT_CLR
+&trans  &bt BT_NXT  &trans  &trans  &trans     &trans                  &trans      &kp LEFT  &kp UP_ARROW  &kp DOWN_ARROW  &kp RIGHT   &trans
+&trans  &bt BT_PRV  &trans  &trans  &kp KP_N6  &trans  &trans  &trans  &bt BT_PRV  &trans    &trans        &trans          &trans      &trans
+                            &trans  &trans     &trans  &trans  &trans  &trans      &trans    &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        layer_4 {
+        adjust {
             bindings = <
-        &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+        &bt BT_CLR_ALL  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans          &trans        &trans        &trans        &trans                        &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans          &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                                      &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
